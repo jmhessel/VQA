@@ -63,7 +63,6 @@ class VQAEval:
 							 'the'
 							]
 
->>>>>>> master
 
     def processPunctuation(self, inText):
         outText = inText
