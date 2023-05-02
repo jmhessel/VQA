@@ -21,7 +21,7 @@ taskType = 'OpenEnded'
 # 'mscoco' only for v1.0.
 # 'mscoco' for real and 'abstract_v002' for abstract for v1.0.
 dataType = 'mscoco'
-dataSubType = 'train2014'
+dataSubType = 'val2014'
 annFile = '%s/Annotations/%s%s_%s_annotations.json' % (
     dataDir, versionType, dataType, dataSubType)
 quesFile = '%s/Questions/%s%s_%s_%s_questions.json' % (
@@ -44,8 +44,18 @@ fileTypes = ['results', 'accuracy', 'evalQA', 'evalQuesType', 'evalAnsType']
         ) for fileType in fileTypes
 ]
 
+#  ../../ofa_huge/
+# annotations.json  predictions.json  questions.json
+
+resFile = '../../ofa_huge/predictions_perfect.json'
+quesFile = '../../ofa_huge/questions.json'
+annFile = '../../ofa_huge/annotations.json'
+
 # create vqa object and vqaRes object
 vqa = VQA(annFile, quesFile)
+annotations = vqa.getQuesIds()
+print(len(annotations))
+
 vqaRes = vqa.loadRes(resFile, quesFile)
 
 # create vqaEval object by taking vqa and vqaRes
